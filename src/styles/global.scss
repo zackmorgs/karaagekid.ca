@@ -56,7 +56,7 @@ img {
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  background: radial-gradient(circle, rgba(17, 17, 17, 0.315), #111);
+  background: radial-gradient(circle, rgba(17, 17, 17, 0.315), #11111154);
 }
 
 .panel {
@@ -65,9 +65,10 @@ img {
   align-items: center;
   justify-content: center;
   padding: 3rem 1rem;
-  background: rgba(17, 17, 17, 0.86);
+  background: rgb(17 17 17 / 95%);
   backdrop-filter: blur(0.5rem);
   width: 100vw;
+  box-shadow: 8px 8px 1rem #00000070;
 }
 
 #logo {
@@ -112,11 +113,13 @@ img {
 
 .btn-instagram {
   display: inline-flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
+  gap: .5rem;
   .btn-icon {
-    height: 2rem;
-    margin-bottom: 1em;
+    height: 1em;
+    // margin-bottom: 1em;
   }
 }
 
@@ -126,10 +129,10 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url("/img/2.png") center / cover no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  background: url("/img/2.webp") center / cover no-repeat;
+//   background-attachment: fixed;
+//   background-size: cover;
+//   background-position: center;
 }
 
 @media (min-width: 768px) {
