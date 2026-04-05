@@ -1,0 +1,54 @@
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-Bold.woff2') format('woff2'),
+        url('Porter-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-Light.woff2') format('woff2'),
+        url('Porter-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-Medium.woff2') format('woff2'),
+        url('Porter-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-BoldItalic.woff2') format('woff2'),
+        url('Porter-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-LightItalic.woff2') format('woff2'),
+        url('Porter-LightItalic.woff') format('woff');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Porter';
+    src: url('Porter-MediumItalic.woff2') format('woff2'),
+        url('Porter-MediumItalic.woff') format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+

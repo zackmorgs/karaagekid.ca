@@ -1,27 +1,58 @@
 $bg_color: rgba(17, 17, 17, 0.78);
 $bg_blur: blur(0.5rem);
 
-@font-face {
-  font-family: "Porter";
-  src:
-    url("/font/Porter-BoldDEMO.woff2") format("woff2"),
-    url("/font/Porter-BoldDEMO.woff") format("woff");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-:root {
-  font-family: "Porter", sans-serif;
-  font-size: 18px;
-  color: #fff;
-  background-color: #111;
-}
-
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Porter-Bold";
+  src:
+    url("/font/Porter-Bold.woff2") format("woff2"),
+    url("/font/Porter-Bold.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  line-height: 1.618rem;
+}
+
+@font-face {
+  font-family: "Porter-Medium";
+  src:
+    url("/font/Porter-Medium.woff2") format("woff2"),
+    url("/font/Porter-Medium.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  line-height: 1.618rem;
+}
+
+@font-face {
+  font-family: "Porter-Light";
+  src:
+    url("/font/Porter-Light.woff2") format("woff2"),
+    url("/font/Porter-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  line-height: 1.618rem;
+}
+
+:root {
+  font-family: "Porter-Light", sans-serif;
+  font-size: 18px;
+  line-height: 1rem;
+  color: #fff;
+  background-color: #111;
+}
+
+p,
+.list {
+  font-family: "Porter-Light", sans-serif;
+  font-size:1rem;
+  line-height: 1.618rem;
 }
 
 html,
@@ -34,6 +65,15 @@ body {
 body {
   background: #111;
   position: relative;
+  color: #c7c6c8;
+}
+
+p {
+  // font-size: 0.75rem;
+}
+
+.text-sm {
+  font-size: 0.875rem;
 }
 
 a {
@@ -42,6 +82,10 @@ a {
 
 #frame {
   position: relative;
+}
+
+.mt-4 {
+  margin-top: 1rem;
 }
 
 .container {
@@ -67,10 +111,10 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem;
-  margin: 1rem;
+  // margin: 1rem;
   background: $bg_color;
   // border: 1px solid rgba(241, 241, 241, 0.212);
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
   backdrop-filter: $bg_blur;
   max-width: 100%;
 }
@@ -154,9 +198,9 @@ a {
   display: none;
   padding: 0 1rem 1rem;
   background: $bg_color;
-  margin: 1rem;
+  // margin: 1rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
+  // border-radius: 0.5rem;
   backdrop-filter: $bg_blur;
 }
 
@@ -179,8 +223,10 @@ a {
   text-decoration: none;
   border-radius: 0.5rem;
   // border:1px solid rgba(241, 241, 241, 0.212);
-  text-align:center;
+  text-align: center;
   // backdrop-filter: $bg_blur;
+
+  border: 1px solid #ffffff21;
 }
 
 .nav_link:hover,
@@ -194,6 +240,7 @@ img {
 }
 
 .hero {
+  text-align:center;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -225,6 +272,13 @@ img {
   backdrop-filter: blur(0.5rem);
   width: 100vw;
   box-shadow: 8px 8px 1rem #00000070;
+
+  &.content {
+    h2 {
+      color: #804099;
+    }
+    display: block;
+  }
 }
 
 #logo {
@@ -240,8 +294,8 @@ img {
 .btn-cta {
   display: inline-flex;
   align-items: center;
-  padding: 0.75em 1em;
-  margin-top: 20px;
+  justify-content: center;
+  padding: 0.5em 1em 0.75rem;
   border-radius: 8px;
   background-color: transparent;
   //   backdrop-filter: blur(0.125rem);

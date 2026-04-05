@@ -29,7 +29,11 @@ const navItems = [
         <div class="container">
           <div id="nav_bar">
             <a href="/" id="nav_logo">
-              <img src="/svg/karaage-kid-logo-sm.svg" alt="Karaage Kid Logo" class="nav_logo_img" />
+              <img
+                src="/svg/karaage-kid-logo-sm.svg"
+                alt="Karaage Kid Logo"
+                class="nav_logo_img"
+              />
             </a>
             <button
               id="nav_toggle"
@@ -59,13 +63,28 @@ const navItems = [
       <slot />
     </div>
 
+    <footer>
+      <div class="container">
+        <div class="panel">
+          <p class="text-sm">
+            &copy; {new Date().getFullYear()} Karaage Kid. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
     <script>
       const initNavToggle = () => {
         const navMain = document.querySelector("#nav_main");
         const navToggle = document.querySelector("#nav_toggle");
         const navContainer = document.querySelector("#nav_container");
 
-        if (!navMain || !navToggle || !navContainer || navToggle.dataset.bound === "true") {
+        if (
+          !navMain ||
+          !navToggle ||
+          !navContainer ||
+          navToggle.dataset.bound === "true"
+        ) {
           return;
         }
 
