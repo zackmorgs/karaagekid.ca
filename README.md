@@ -1,4 +1,12 @@
 # karaagekid.ca
+
+## Firebase Hosting
+
+1. Update `.firebaserc` with your real Firebase project ID.
+2. Log in once with `npm run firebase:login`.
+3. Build and deploy with `npm run deploy`.
+4. If you need to connect the project interactively, run `npm run firebase:init`.
+
 ## Todo
 - Menu
 - Price Calculator

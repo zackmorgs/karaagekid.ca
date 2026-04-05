@@ -1,5 +1,16 @@
 ---
-import '../styles/global.scss';
+import "../styles/global.scss";
+
+const navItems = [
+  { name: "About", href: "/about" },
+  // { name: "Location", href: "/location" },
+  { name: "Menu", href: "/menu" },
+  { name: "Reviews", href: "/reviews" },
+  // { name: "FAQ", href: "/faq" },
+  { name: "Events", href: "/events" },
+  { name: "Gallery", href: "/gallery" },
+  { name: "Contact", href: "/contact" },
+];
 ---
 
 <!doctype html>
@@ -13,6 +24,71 @@ import '../styles/global.scss';
     <title>Karaage Kid | Japanese Style Fried Chicken</title>
   </head>
   <body>
-    <slot />
+    <div id="frame">
+      <nav id="nav_main">
+        <div class="container">
+          <div id="nav_bar">
+            <a href="/" id="nav_logo">
+              <img src="/svg/karaage-kid-logo-sm.svg" alt="Karaage Kid Logo" class="nav_logo_img" />
+            </a>
+            <button
+              id="nav_toggle"
+              type="button"
+              aria-label="Toggle navigation menu"
+              aria-controls="nav_container"
+              aria-expanded="false"
+            >
+              <span class="hamburger"></span>
+            </button>
+          </div>
+          <div id="nav_container">
+            <ul class="nav_menu">
+              {
+                navItems.map((item) => (
+                  <li class="nav_item">
+                    <a href={item.href} class="nav_link">
+                      {item.name}
+                    </a>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <slot />
+    </div>
+
+    <script>
+      const initNavToggle = () => {
+        const navMain = document.querySelector("#nav_main");
+        const navToggle = document.querySelector("#nav_toggle");
+        const navContainer = document.querySelector("#nav_container");
+
+        if (!navMain || !navToggle || !navContainer || navToggle.dataset.bound === "true") {
+          return;
+        }
+
+        navToggle.dataset.bound = "true";
+
+        const setExpanded = (expanded) => {
+          navMain.classList.toggle("active", expanded);
+          navContainer.classList.toggle("active", expanded);
+          navToggle.setAttribute("aria-expanded", String(expanded));
+        };
+
+        navToggle.addEventListener("click", () => {
+          const isExpanded = navToggle.getAttribute("aria-expanded") === "true";
+          setExpanded(!isExpanded);
+        });
+
+        navContainer.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => setExpanded(false));
+        });
+      };
+
+      document.addEventListener("DOMContentLoaded", initNavToggle);
+      document.addEventListener("astro:page-load", initNavToggle);
+    </script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "karaagekid",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -9,7 +9,10 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "firebase:login": "npx firebase-tools login",
+    "firebase:init": "npx firebase-tools init hosting",
+    "deploy": "npm run build && npx firebase-tools deploy --only hosting"
   },
   "dependencies": {
     "astro": "^6.1.3"
