@@ -112,7 +112,17 @@ const navItems = [
         });
       };
 
+      const enableActiveLinks = () => {
+        const currentPath = window.location.pathname;
+        document.querySelectorAll(".nav-link").forEach((link) => {
+          if (link.getAttribute("href") === currentPath) {
+            link.classList.add("active");
+          }
+        });
+      }
+
       document.addEventListener("DOMContentLoaded", initNavToggle);
+      document.addEventListener("DOMContentLoaded", enableActiveLinks);
       document.addEventListener("astro:page-load", initNavToggle);
     </script>
   </body>
