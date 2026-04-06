@@ -248,25 +248,34 @@ const structuredData = {
 
     <script>
       const initAnalyticsEvents = () => {
-        document.querySelectorAll<HTMLElement>("[data-ga-event]").forEach((link) => {
-          if (link.dataset.gaBound === "true") return;
-          link.dataset.gaBound = "true";
+        const analyticsWindow = window as unknown as Window & {
+          gtag?: (...args: unknown[]) => void;
+        };
 
-          link.addEventListener("click", () => {
-            const eventName = link.dataset.gaEvent;
-            const eventLabel = link.dataset.gaLabel ?? link.getAttribute("href") ?? "unknown";
+        document.querySelectorAll<HTMLElement>("[data-ga-event]").forEach(
+          (link) => {
+            if (link.dataset.gaBound === "true") return;
+            link.dataset.gaBound = "true";
 
-            if (!eventName || typeof window.gtag !== "function") {
-              return;
-            }
+            link.addEventListener("click", () => {
+              const eventName = link.dataset.gaEvent;
+              const eventLabel =
+                link.dataset.gaLabel ??
+                link.getAttribute("href") ??
+                "unknown";
 
-            window.gtag("event", eventName, {
-              event_category: "engagement",
-              event_label: eventLabel,
-              page_location: window.location.pathname,
+              if (!eventName || typeof analyticsWindow.gtag !== "function") {
+                return;
+              }
+
+              analyticsWindow.gtag("event", eventName, {
+                event_category: "engagement",
+                event_label: eventLabel,
+                page_location: window.location.pathname,
+              });
             });
-          });
-        });
+          },
+        );
       };
 
       document.addEventListener("DOMContentLoaded", initAnalyticsEvents);
