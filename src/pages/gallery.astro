@@ -1,10 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
-
+import Gallery from '../components/Gallery.astro';
 ---
 
 <Layout>
-	<header id="about" class="hero">
+	<header id="about" class="hero semi-parallax">
         <div class="overlay">
             <div class="container">
             <div class="panel">
@@ -13,13 +13,16 @@ import Layout from '../layouts/Layout.astro';
         </div>
         </div>
     </header>
-    <section>
+    <!-- <section id="gallery_intro" class="semi-parallax">
         <div class="overlay">
             <div class="container">
                 <div class="panel">
-                    <p>Check out our gallery of delicious karaage dishes and our cozy restaurant atmosphere. From crispy chicken to mouthwatering sides, our photos will make you crave a visit to Karaage Kid!</p>
+                    <p>Check out our gallery of delicious karaage dishes. </p>
+
+                    <p>From crispy chicken to mouthwatering sides, our photos will make you crave Karaage Kid!</p>
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
+    <Gallery/>
 </Layout>

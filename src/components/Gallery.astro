@@ -1,0 +1,220 @@
+---
+const images = [
+  {
+    src: "/img/gallery/1.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/2.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/3.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/4.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/5.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/7.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/8.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/9.png",
+    alt: "",
+  },
+  {
+    src: "/img/gallery/10.png",
+    alt: "",
+  },
+];
+---
+
+<section class="gallery" data-gallery-root>
+  <div class="overlay">
+    <div class="container">
+      <div class="panel">
+        <div class="gallery-grid">
+          {
+            images.map((image, index) => {
+              const altText = image.alt || `Karaage Kid gallery photo ${index + 1}`;
+
+              return (
+                <button
+                  type="button"
+                  class="gallery-trigger"
+                  data-gallery-image
+                  data-fullsrc={image.src}
+                  data-alt={altText}
+                  aria-label={`Open ${altText} fullscreen`}
+                >
+                  <img
+                    src={image.src}
+                    alt={altText}
+                    class="gallery-img"
+                    loading="lazy"
+                  />
+                </button>
+              );
+            })
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <dialog class="gallery-modal" aria-label="Fullscreen gallery image">
+    <div class="gallery-modal-shell">
+      <button
+        type="button"
+        class="gallery-modal-close"
+        data-gallery-close
+        aria-label="Close fullscreen image"
+      >
+        ×
+      </button>
+
+      <img class="gallery-modal-image" src="" alt="" />
+    </div>
+  </dialog>
+</section>
+
+<style>
+  .gallery-trigger {
+    display: block;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+    border-radius: 0.5rem;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .gallery-trigger:hover .gallery-img,
+  .gallery-trigger:focus-visible .gallery-img {
+    transform: scale(1.02);
+    box-shadow: 0 0 0 1px rgb(255 255 255 / 18%);
+  }
+
+  .gallery-trigger:focus-visible {
+    outline: 2px solid rgb(255 255 255 / 65%);
+    outline-offset: 0.25rem;
+  }
+
+  .gallery-modal {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    max-width: none;
+  }
+
+  .gallery-modal::backdrop {
+    background: rgb(17 17 17 / 90%);
+    backdrop-filter: blur(0.25rem);
+  }
+
+  .gallery-modal-shell {
+    position: relative;
+  }
+
+  .gallery-modal-image {
+    display: block;
+    max-width: min(95vw, 80rem);
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0.75rem;
+  }
+
+  .gallery-modal-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: rgb(17 17 17 / 78%);
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-gallery-root]').forEach((gallery) => {
+    if (gallery.dataset.modalBound === 'true') {
+      return;
+    }
+
+    gallery.dataset.modalBound = 'true';
+
+    const modal = gallery.querySelector('.gallery-modal');
+    const modalImage = gallery.querySelector('.gallery-modal-image');
+    const closeButton = gallery.querySelector<HTMLButtonElement>('[data-gallery-close]');
+    const imageButtons = gallery.querySelectorAll<HTMLElement>('[data-gallery-image]');
+
+    if (!(modal instanceof HTMLDialogElement) || !(modalImage instanceof HTMLImageElement)) {
+      return;
+    }
+
+    const openModal = (src: string, alt: string) => {
+      modalImage.src = src;
+      modalImage.alt = alt;
+      document.body.style.overflow = 'hidden';
+      modal.showModal();
+    };
+
+    const closeModal = () => {
+      modal.close();
+    };
+
+    imageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const src = button.getAttribute('data-fullsrc');
+        const alt = button.getAttribute('data-alt') || 'Gallery image';
+
+        if (!src) {
+          return;
+        }
+
+        openModal(src, alt);
+      });
+    });
+
+    closeButton?.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+
+    modal.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      modalImage.src = '';
+      modalImage.alt = '';
+    });
+  });
+</script>

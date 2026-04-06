@@ -221,7 +221,7 @@ a {
   list-style: none;
 }
 
-.nav_link {
+.nav-link {
   display: block;
   padding: 1rem;
   text-decoration: none;
@@ -229,13 +229,22 @@ a {
   // border:1px solid rgba(241, 241, 241, 0.212);
   text-align: center;
   // backdrop-filter: $bg_blur;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 
   border: 1px solid #ffffff21;
-}
 
-.nav_link:hover,
-.nav_link:focus-visible {
-  background: rgb(255 255 255 / 10%);
+  &:hover,
+  &:focus-visible {
+    background: rgb(255 255 255 / 10%);
+    transform: scale(1.05);
+  }
+
+  &:active {
+    background: rgb(255 255 255 / 20%);
+    transform: scale(0.95);
+  }
 }
 
 .nav-feature {
@@ -243,7 +252,7 @@ a {
   display: flex;
   justify-content: center;
   .btn-cta {
-    width:100%;
+    width: 100%;
   }
 }
 
@@ -354,9 +363,8 @@ img {
     transform: scale(0.95);
   }
 
-
   &.btn-emphasis {
-    width:16ch;
+    width: 16ch;
   }
 }
 
@@ -402,7 +410,8 @@ img {
   // }
 }
 
-.social {
+.social,
+#gallery_intro {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -442,6 +451,20 @@ img {
   }
 }
 
+// .gallery {
+  
+// }
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.gallery-img {
+  border-radius:0.5rem;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -457,7 +480,11 @@ footer {
   .panel {
     width: 100vw;
   }
+}
 
+@media (min-width: 1024px) {
+  .panel {
+  }
   #nav_main {
     background: $bg_color;
     .container {
@@ -477,11 +504,22 @@ footer {
   }
 
   #nav_container {
-    display: block;
+    display: flex;
+    flex-direction: row;
     padding: 0 1rem;
-  }
-  #nav_container {
     background: transparent;
+    width: 100%;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .nav-feature {
+    padding: 0 0 0 1rem;
+    margin: 0;
+    .btn-cta {
+      width: auto;
+      font-size: 0.75rem;
+    }
   }
   .nav_menu {
     flex-direction: row;
@@ -491,17 +529,13 @@ footer {
     background: transparent;
   }
 
-  .nav_link {
+  .nav-link {
     padding: 0.5rem 0.75rem 0.75rem;
+    font-size: 0.75rem;
   }
 
   #logo {
     max-width: 36ch;
-  }
-}
-
-@media (min-width: 1024px) {
-  .panel {
   }
 }
 
