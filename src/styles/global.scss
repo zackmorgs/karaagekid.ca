@@ -351,7 +351,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding:0.75em 1em 0.75rem;
+  padding: 0.75em 1em 0.75rem;
   border-radius: 8px;
   background-color: transparent;
   //   backdrop-filter: blur(0.125rem);
@@ -372,7 +372,7 @@ img {
   }
 
   &.btn-emphasis {
-    width: 16ch;
+    width: 18ch;
   }
 }
 
@@ -383,8 +383,11 @@ img {
 }
 
 .btn-icon {
-  height: 1em;
+  height: 1.125rem;
   width: auto;
+  &.btn-icon-right {
+    margin-right: 0.25rem;
+  }
 }
 
 .btn-instagram {
@@ -576,7 +579,7 @@ footer {
 
   .gallery {
     .panel {
-      margin-top:2rem;
+      margin-top: 2rem;
     }
   }
 }
@@ -617,6 +620,7 @@ footer {
     padding: 0 0 0 1rem;
     margin: 0;
     .btn-cta {
+      padding: 0.75em;
       width: auto;
       font-size: 0.75rem;
     }
@@ -630,7 +634,6 @@ footer {
   }
 
   .nav-link {
-    
     padding: 0.75rem;
     font-size: 0.75rem;
   }

@@ -1,24 +1,34 @@
 # karaagekid.ca
 
-## Firebase Hosting
-
-1. Update `.firebaserc` with your real Firebase project ID.
-2. Log in once with `npm run firebase:login`.
-3. Build and deploy with `npm run deploy`.
-4. If you need to connect the project interactively, run `npm run firebase:init`.
-
-## Todo
-- Menu
+## Zack's Todo:
 - Price Calculator
-- Gallery
+- Gallery 
+  - Need image descriptions
 - About
+  - Need more about info
+    - Location
 - FAQ
+  - Page doth not exist. Should it?
 - Events
+  - Needs an event once one comes around
 - Reviews / Testimonials
-- Location / Service Area
+  - Need to code in testimonials 
+    - Want to harvest google reviews - needs business page.
 
+## Jay's Todo:
+- Facebook page creation
+- X page creation
+- Google Business Page
+- Get me content for the following:
+  - Price calculator. 
+    - I know 30 ppl = C$1000-1250.  
+    - what about 50? 75? 100? lmk
+- Reviews / Testimonials
+- What is your serving locations? 
+  - This will go on `/about`
+- For each picture on `/gallery`
+  - Need description.
 
-- try purple h1 w' white text-shadow
 ## Menu
 
 ### Karaage Plates
