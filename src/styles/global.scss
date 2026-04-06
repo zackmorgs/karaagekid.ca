@@ -555,10 +555,9 @@ footer {
 }
 
 @media (min-width: 1024px) {
-  .panel {
-  }
   #nav_main {
     background: $bg_color;
+    backdrop-filter: $bg_blur;
     .container {
       display: flex;
       align-items: center;
@@ -568,7 +567,8 @@ footer {
 
   #nav_bar {
     padding-bottom: 0.5rem;
-    background: transparent;
+    background: none;
+    backdrop-filter:none;
   }
 
   #nav_toggle {
@@ -583,6 +583,7 @@ footer {
     width: 100%;
     align-items: center;
     justify-content: flex-end;
+    backdrop-filter:none;
   }
 
   .nav-feature {
@@ -621,5 +622,9 @@ footer {
     .container {
       max-width: 1536px;
     }
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
