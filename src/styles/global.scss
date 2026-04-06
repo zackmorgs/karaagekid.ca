@@ -52,6 +52,24 @@ $purple:  #804099;
   background-color: #111;
 }
 
+#hero_subtitle {
+  font-family: "Porter-Light", sans-serif;
+  font-weight:300;
+  color:white;
+  border-radius:2rem;
+  font-size:1rem;
+  border:2px solid rgba(225,225,225,0.5);
+  background: #00000027;
+  padding:1rem;
+}
+
+.rule-sm {
+  width: 2rem;
+  border:0;
+  border-bottom:5px solid #f1f1f188;
+  background: currentColor;
+}
+
 p,
 .list {
   font-family: "Porter-Light", sans-serif;
@@ -584,7 +602,14 @@ footer {
   margin: 0 auto;
 }
 
+.hidden-mobile {
+  display: none;
+}
+
 @media (min-width: 768px) {
+  .hidden-mobile {
+    display:inline-flex;
+  }
   .panel {
     width: 56ch;
     background: #00000063;
