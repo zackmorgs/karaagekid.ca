@@ -20,7 +20,8 @@ const navItems = [
   { name: "Contact", href: "/contact" },
 ];
 
-const defaultTitle = "Karaage Kid | Japanese-Style Fried Chicken Catering in Toronto";
+const defaultTitle =
+  "Karaage Kid | Japanese-Style Fried Chicken Catering in Toronto";
 const defaultDescription =
   "Karaage Kid brings crispy Japanese-style fried chicken to pop-ups, catering, private events, and festivals across Toronto.";
 
@@ -32,7 +33,9 @@ const {
   noindex = false,
 } = Astro.props as Props;
 
-const pageTitle = title.includes("Karaage Kid") ? title : `${title} | Karaage Kid`;
+const pageTitle = title.includes("Karaage Kid")
+  ? title
+  : `${title} | Karaage Kid`;
 const siteUrl = Astro.site ?? new URL(Astro.url.origin);
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
 const seoImageUrl = new URL(image, siteUrl).toString();
@@ -114,7 +117,10 @@ const structuredData = {
     <meta name="twitter:image:alt" content={pageTitle} />
 
     <title>{pageTitle}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(structuredData)}
+    />
   </head>
   <body>
     <div id="frame">
@@ -151,9 +157,7 @@ const structuredData = {
               }
             </ul>
             <div class="nav-feature">
-              <a href="/get-a-quote" class="btn-cta">
-                Get a Quote
-              </a>
+              <a href="/get-a-quote" class="btn-cta"> Get a Quote </a>
             </div>
           </div>
         </div>
@@ -165,7 +169,7 @@ const structuredData = {
       <div class="container">
         <div class="panel">
           <p class="text-sm">
-            &copy; {new Date().getFullYear()} Karaage Kid. 
+            &copy; {new Date().getFullYear()} Karaage Kid.
           </p>
           <p>All rights reserved.</p>
         </div>
@@ -175,8 +179,10 @@ const structuredData = {
     <script>
       const initNavToggle = () => {
         const navMain = document.querySelector<HTMLElement>("#nav_main");
-        const navToggle = document.querySelector<HTMLButtonElement>("#nav_toggle");
-        const navContainer = document.querySelector<HTMLElement>("#nav_container");
+        const navToggle =
+          document.querySelector<HTMLButtonElement>("#nav_toggle");
+        const navContainer =
+          document.querySelector<HTMLElement>("#nav_container");
 
         if (
           !navMain ||
@@ -212,11 +218,24 @@ const structuredData = {
             link.classList.add("active");
           }
         });
-      }
+      };
 
       document.addEventListener("DOMContentLoaded", initNavToggle);
       document.addEventListener("DOMContentLoaded", enableActiveLinks);
       document.addEventListener("astro:page-load", initNavToggle);
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6WG7L851R"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-Q6WG7L851R");
     </script>
   </body>
 </html>
