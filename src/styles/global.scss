@@ -287,12 +287,29 @@ img {
   background-size: cover !important;
 }
 
+.text-center {
+  text-align: center;
+}
+
 @supports (font: -apple-system-body) {
   .semi-parallax {
     background-attachment: scroll !important;
     background-size: auto 100%;
   }
 }
+
+
+#location {
+  background: url("/img/9-gradient-map.png") center/cover no-repeat;
+
+}
+
+#location_icon {
+  margin:0 auto;
+  height:2rem;
+  color:currentColor;
+}
+
 #our_story {
   background: url("/img/9-gradient-map.png") center/cover no-repeat;
 }
