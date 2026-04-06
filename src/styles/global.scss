@@ -10,8 +10,8 @@ $bg_blur: blur(0.5rem);
 @font-face {
   font-family: "Porter-Bold";
   src:
-    url("/font/Porter-Bold.woff2") format("woff2"),
-    url("/font/Porter-Bold.woff") format("woff");
+    url("/font/porter_bold-webfont.woff2") format("woff2"),
+    url("/font/porter_bold-webfont.woff") format("woff");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -21,8 +21,8 @@ $bg_blur: blur(0.5rem);
 @font-face {
   font-family: "Porter-Medium";
   src:
-    url("/font/Porter-Medium.woff2") format("woff2"),
-    url("/font/Porter-Medium.woff") format("woff");
+    url("/font/porter_medium-webfont.woff2") format("woff2"),
+    url("/font/porter_medium-webfont.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -32,8 +32,8 @@ $bg_blur: blur(0.5rem);
 @font-face {
   font-family: "Porter-Light";
   src:
-    url("/font/Porter-Light.woff2") format("woff2"),
-    url("/font/Porter-Light.woff") format("woff");
+    url("/font/porter_light-webfont.woff2") format("woff2"),
+    url("/font/porter_light-webfont.woff") format("woff");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -343,7 +343,7 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5em 1em 0.75rem;
+  padding:0.75em 1em 0.75rem;
   border-radius: 8px;
   background-color: transparent;
   //   backdrop-filter: blur(0.125rem);
@@ -423,76 +423,76 @@ img {
 }
 
 .gallery-trigger {
-    display: block;
-    padding: 0;
-    border: 0;
-    background: transparent;
-    cursor: zoom-in;
-    border-radius: 0.5rem;
-  }
+  display: block;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: zoom-in;
+  border-radius: 0.5rem;
+}
 
-  .gallery-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition:
-      transform 0.2s ease,
-      box-shadow 0.2s ease;
-  }
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
 
-  .gallery-trigger:hover .gallery-img,
-  .gallery-trigger:focus-visible .gallery-img {
-    transform: scale(1.02);
-    box-shadow: 0 0 0 1px rgb(255 255 255 / 18%);
-  }
+.gallery-trigger:hover .gallery-img,
+.gallery-trigger:focus-visible .gallery-img {
+  transform: scale(1.02);
+  box-shadow: 0 0 0 1px rgb(255 255 255 / 18%);
+}
 
-  .gallery-trigger:focus-visible {
-    outline: 2px solid rgb(255 255 255 / 65%);
-    outline-offset: 0.25rem;
-  }
+.gallery-trigger:focus-visible {
+  outline: 2px solid rgb(255 255 255 / 65%);
+  outline-offset: 0.25rem;
+}
 
-  .gallery-modal {
-    padding: 0;
-    border: 0;
-    background: transparent;
-    max-width: none;
-  }
+.gallery-modal {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  max-width: none;
+}
 
-  .gallery-modal::backdrop {
-    background: rgb(17 17 17 / 90%);
-    backdrop-filter: blur(0.25rem);
-  }
+.gallery-modal::backdrop {
+  background: rgb(17 17 17 / 90%);
+  backdrop-filter: blur(0.25rem);
+}
 
-  .gallery-modal-shell {
-    position: relative;
-  }
+.gallery-modal-shell {
+  position: relative;
+}
 
-  .gallery-modal-image {
-    display: block;
-    max-width: min(95vw, 80rem);
-    max-height: 90vh;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-    border-radius: 0.75rem;
-  }
+.gallery-modal-image {
+  display: block;
+  max-width: min(95vw, 80rem);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0.75rem;
+}
 
-  .gallery-modal-close {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border: 0;
-    border-radius: 999px;
-    background: rgb(17 17 17 / 78%);
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
+.gallery-modal-close {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(17 17 17 / 78%);
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
 
 .menu-list {
   display: flex;
@@ -524,7 +524,7 @@ img {
 }
 
 // .gallery {
-  
+
 // }
 
 .gallery-grid {
@@ -534,7 +534,7 @@ img {
 }
 
 .gallery-img {
-  border-radius:0.5rem;
+  border-radius: 0.5rem;
 }
 
 footer {
@@ -550,7 +550,26 @@ footer {
 
 @media (min-width: 768px) {
   .panel {
-    width: 100vw;
+    width: 56ch;
+    background: #00000063;
+    border: 2px solid #f1f1f123;
+    border-radius: 1rem;
+    &.content {
+      h2 {
+        // text-shadow: 1px 1px 0px #f1f1f1;
+        font-size: 2rem;
+      }
+    }
+  }
+
+  .menu-panel {
+    margin-top: 2rem;
+  }
+
+  .gallery {
+    .panel {
+      margin-top:2rem;
+    }
   }
 }
 
@@ -568,7 +587,7 @@ footer {
   #nav_bar {
     padding-bottom: 0.5rem;
     background: none;
-    backdrop-filter:none;
+    backdrop-filter: none;
   }
 
   #nav_toggle {
@@ -583,7 +602,7 @@ footer {
     width: 100%;
     align-items: center;
     justify-content: flex-end;
-    backdrop-filter:none;
+    backdrop-filter: none;
   }
 
   .nav-feature {
@@ -606,16 +625,24 @@ footer {
     padding: 0.5rem 0.75rem 0.75rem;
     font-size: 0.75rem;
   }
-
   #logo {
-    max-width: 36ch;
+    max-width: 48ch;
   }
 }
 
 @media (min-width: 1536px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
   .panel {
-    width: 48ch;
+    min-width: 48ch;
+    max-width: 72ch;
+
     border-radius: 0.5rem;
+
+    &.content {
+      background: transparent;
+    }
   }
 
   #nav_main {

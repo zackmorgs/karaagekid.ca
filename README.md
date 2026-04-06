@@ -17,6 +17,8 @@
 - Reviews / Testimonials
 - Location / Service Area
 
+
+- try purple h1 w' white text-shadow
 ## Menu
 
 ### Karaage Plates
