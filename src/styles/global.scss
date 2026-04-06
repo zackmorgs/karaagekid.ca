@@ -600,6 +600,18 @@ footer {
     background: none;
     backdrop-filter: none;
   }
+  .nav_bar {
+    transition: background 0.2s ease;
+    &:hover {
+      background: rgba(0,0,0,0.25);
+    }
+  }
+  #nav_logo {
+    transition: transform 0.2s ease;
+    &:hover {
+      transform: scale(1.5) rotate(360deg);
+    }
+  }
 
   #nav_toggle {
     display: none;
