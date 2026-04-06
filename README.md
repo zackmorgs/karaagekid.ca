@@ -16,6 +16,8 @@
     - Want to harvest google reviews - needs business page.
 
 ## Jay's Todo:
+- Ez: https://www.instagram.com/p/DO_eM7ADgp3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==
+  - i need the png/jpeg/webp of this image.
 - Facebook page creation
 - X page creation
 - Google Business Page
