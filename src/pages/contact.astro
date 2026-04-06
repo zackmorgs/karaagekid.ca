@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Social from "../components/Social.astro";
 ---
 
 <Layout>
@@ -15,15 +16,21 @@ import Layout from "../layouts/Layout.astro";
   <section id="contact">
     <div class="overlay">
       <div class="container">
-        <div class="panel">
+        <div class="panel content">
+          <p>Have questions, feedback, or want to book a reservation?</p>
           <p>
-            Have questions, feedback, or want to book a reservation? Get in
-            touch with us! We’d love to hear from you. You can reach us via
-            email at
-            <a href="mailto:contact.karaagekid@gmail.com">info@karaagekid.ca</a>
+            Get in touch with us! We’d love to hear from you. You can reach us
+            via email at
           </p>
+          <div class="btn-group-horizontal">
+            <a href="mailto:contact.karaagekid@gmail.com" class="btn btn-cta"
+              >Email Us</a
+            >
+            <a class="btn btn-cta" href="tel:+6477870671"> Call Us </a>
+          </div>
         </div>
       </div>
     </div>
   </section>
+  <Social />
 </Layout>
