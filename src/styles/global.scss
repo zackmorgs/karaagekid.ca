@@ -51,7 +51,7 @@ $bg_blur: blur(0.5rem);
 p,
 .list {
   font-family: "Porter-Light", sans-serif;
-  font-size:1rem;
+  font-size: 1rem;
   line-height: 1.618rem;
 }
 
@@ -86,6 +86,10 @@ a {
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .container {
@@ -234,23 +238,58 @@ a {
   background: rgb(255 255 255 / 10%);
 }
 
+.nav-feature {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  .btn-cta {
+    width:100%;
+  }
+}
+
 img {
   display: block;
   max-width: 100%;
 }
 
 .hero {
-  text-align:center;
+  text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   min-height: 100vh;
-  background: url("/img/1@1x_1.png") center / cover no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
+  background: url("/img/1-gradient-map.png") center / cover no-repeat;
+
   //   border-bottom: 1px solid rgba(0, 0, 0, 0.233);
+}
+
+.semi-parallax {
+  background-attachment: fixed !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+@supports (font: -apple-system-body) {
+  .semi-parallax {
+    background-attachment: scroll !important;
+    background-size: auto 100%;
+  }
+}
+#our_story {
+  background: url("/img/9-gradient-map.png") center/cover no-repeat;
+}
+
+#our_style {
+  background: url("/img/10-gradient-map.png") center/cover no-repeat;
+}
+
+#our_mission {
+  background: url("/img/11-gradient-map.png") center/cover no-repeat;
+}
+
+#built_for_events {
+  background: url("/img/12-gradient-map.png") center/cover no-repeat;
 }
 
 .overlay {
@@ -271,7 +310,7 @@ img {
   background: rgb(17 17 17 / 78%);
   backdrop-filter: blur(0.5rem);
   width: 100vw;
-  box-shadow: 8px 8px 1rem #00000070;
+  // box-shadow: 8px 8px 1rem #00000070;
 
   &.content {
     h2 {
@@ -314,6 +353,17 @@ img {
     // background-color: #1e1c1e;
     transform: scale(0.95);
   }
+
+
+  &.btn-emphasis {
+    width:16ch;
+  }
+}
+
+@supports (font: -apple-system-body) {
+  .btn-cta {
+    padding: 1rem;
+  }
 }
 
 .btn-icon {
@@ -335,6 +385,21 @@ img {
 
 .section {
   height: 100vh;
+  position: relative;
+
+  // &:after {
+  //   content: "";
+  //   position: absolute;
+  //   top:90%;
+  //   bottom: 0;
+  //   right: 0;
+  //   left: 0;
+  //   height: 3rem;
+  //   width:100%;
+  //   background-color: red;
+  //   backdrop-filter: blur(0.5rem);
+
+  // }
 }
 
 .social {
@@ -342,7 +407,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: url("/img/2.webp") center / cover no-repeat;
+  background: url("/img/2-gradient-map.png") center/cover no-repeat;
   //   background-attachment: fixed;
   //   background-size: cover;
   //   background-position: center;
@@ -358,10 +423,10 @@ img {
 }
 
 .menu-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
   padding: 1rem;
   background: rgb(39 39 39);
   backdrop-filter: blur(0.5rem);
@@ -373,7 +438,19 @@ img {
     margin: 0;
     font-size: 1.5rem;
     text-align: left;
+    line-height: 1.618rem;
   }
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgb(17 17 17 / 78%);
+  backdrop-filter: blur(0.5rem);
+  max-width: 1536px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -381,8 +458,18 @@ img {
     width: 100vw;
   }
 
+  #nav_main {
+    background: $bg_color;
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
   #nav_bar {
     padding-bottom: 0.5rem;
+    background: transparent;
   }
 
   #nav_toggle {
@@ -391,17 +478,21 @@ img {
 
   #nav_container {
     display: block;
-    padding: 0 1rem 1rem;
+    padding: 0 1rem;
   }
-
+  #nav_container {
+    background: transparent;
+  }
   .nav_menu {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
+
+    background: transparent;
   }
 
   .nav_link {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.75rem 0.75rem;
   }
 
   #logo {
@@ -418,5 +509,11 @@ img {
   .panel {
     width: 48ch;
     border-radius: 0.5rem;
+  }
+
+  #nav_main {
+    .container {
+      max-width: 1536px;
+    }
   }
 }

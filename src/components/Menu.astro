@@ -34,8 +34,7 @@ const menuSections = [
     items: [
       {
         name: "Karaage Sandwich (Mild)",
-        description:
-          "Topped with sesame sauce, spicy mayo, and crispy onions.",
+        description: "Topped with sesame sauce, spicy mayo, and crispy onions.",
       },
       {
         name: "Nashville Hot Sandwich",
@@ -61,8 +60,8 @@ const menuSections = [
 ---
 
 <header class="hero">
-  <div class="container">
-    <div class="overlay">
+  <div class="overlay">
+    <div class="container">
       <div class="panel">
         <h1>Menu</h1>
       </div>
@@ -71,30 +70,35 @@ const menuSections = [
 </header>
 
 <section id="menu">
-  <div class="container">
-    <div class="panel menu-panel">
-      <p class="menu-intro">
-        Japanese-inspired comfort food built around our signature karaage.
-      </p>
+  <div class="overlay">
+    <div class="container">
+      <div class="panel menu-panel">
+        <p class="menu-intro">
+          Japanese-inspired comfort food built around our signature karaage.
+        </p>
 
-      <div class="menu-grid">
-        {menuSections.map((section) => (
-          <div class="menu-section">
-            <h2>{section.title}</h2>
-            {section.note && <p class="menu-section-note">{section.note}</p>}
+        <div class="menu-grid">
+          {
+            menuSections.map((section) => (
+              <div class="menu-section">
+                <h2>{section.title}</h2>
+                {section.note && (
+                  <p class="menu-section-note">{section.note}</p>
+                )}
 
-            <ul class="menu-list">
-              {section.items.map((item) => (
-                <li class="menu-item">
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
+                <ul class="menu-list">
+                  {section.items.map((item) => (
+                    <li class="menu-item">
+                      <h3>{item.name}</h3>
+                      <p>{item.description}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))
+          }
+        </div>
       </div>
     </div>
   </div>
 </section>
-

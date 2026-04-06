@@ -3,42 +3,45 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <header id="about_hero" class="hero">
+  <header id="about_hero" class="hero semi-parallax" >
     <div class="overlay">
       <div class="container">
         <div class="panel content">
-          <h1>About Us</h1>
+          <h1>About</h1>
         </div>
       </div>
     </div>
   </header>
-  <section id="our_story">
-    <div class="container">
-      <div class="panel content">
-        <h2>Our Story</h2>
-        <p>
-          Karaage Kid is a Toronto-based pop-up and catering concept dedicated
-          to one thing: perfect Japanese-style fried chicken.
-        </p>
-        <p>
-          Built around the art of karaage—Japan’s take on fried chicken—our menu
-          focuses on bold flavor, clean execution, and crave-worthy comfort
-          food. Every piece is marinated, hand-breaded, and fried to achieve
-          that signature balance: crispy on the outside, juicy on the inside.
-        </p>
+  <section id="our_story" class="semi-parallax section">
+    <div class="overlay">
+      <div class="container">
+        <div class="panel content">
+          <h2>Our Story</h2>
+          <p>
+            Karaage Kid is a Toronto-based pop-up and catering concept dedicated
+            to one thing: perfect Japanese-style fried chicken.
+          </p>
+          <!-- <p>
+            Built around the art of karaage—Japan’s take on fried chicken—our
+            menu focuses on bold flavor, clean execution, and crave-worthy
+            comfort food. Every piece is marinated, hand-breaded, and fried to
+            achieve that signature balance: crispy on the outside, juicy on the
+            inside.
+          </p> -->
+        </div>
       </div>
     </div>
   </section>
-  <section id="our_style">
+  <section id="our_style" class="semi-parallax section">
     <div class="overlay">
       <div class="container">
         <div class="panel content">
           <h2>Our Style</h2>
           <p>We keep things simple, but intentional.</p>
-          <p>
+          <!-- <p>
             From our signature boxes to our sandwiches on soft brioche buns,
             everything is designed to hit that perfect mix of:
-          </p>
+          </p> -->
           <ul class="list">
             <li>Bold flavor</li>
             <li>Clean execution</li>
@@ -48,7 +51,7 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section>
+  <section id="our_mission" class="semi-parallax section">
     <div class="overlay">
       <div class="container">
         <div class="panel content">
@@ -61,7 +64,7 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
-  <section>
+  <section id="built_for_events" class="section semi-parallax">
     <div class="overlay">
       <div class="container">
         <div class="panel content">
@@ -78,8 +81,7 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </div>
     </div>
-  </section>
-  <section>
+  </section> <!-- <section id="the_idea" class="section semi-parallax">
     <div class="container">
       <div class="overlay">
         <div class="panel content">
@@ -92,4 +94,5 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </section>
+  -->
 </Layout>
