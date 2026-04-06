@@ -1,10 +1,14 @@
 $bg_color: rgba(17, 17, 17, 0.78);
 $bg_blur: blur(0.5rem);
-
+$purple:  #804099;
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+*::selection {
+  background: $purple;
 }
 
 @font-face {
