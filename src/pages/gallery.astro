@@ -1,9 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Gallery from '../components/Gallery.astro';
+import GallerySection from '../components/Gallery.astro';
 ---
 
-<Layout>
+<Layout
+  title="Karaage Kid Gallery"
+  description="Browse photos of Karaage Kid's Japanese-style fried chicken, catering setups, and event food moments."
+  image="/img/gallery/1.png"
+>
 	<header id="about" class="hero semi-parallax">
         <div class="overlay">
             <div class="container">
@@ -25,5 +29,5 @@ import Gallery from '../components/Gallery.astro';
             </div>
         </div>
     </section> -->
-    <Gallery/>
+    <GallerySection />
 </Layout>

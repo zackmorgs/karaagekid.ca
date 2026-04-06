@@ -1,0 +1,31 @@
+[debug] [2026-04-06T10:32:37.354Z] ----------------------------------------------------------------------
+[debug] [2026-04-06T10:32:37.356Z] Command:       /home/zackmorgs/.nvm/versions/node/v24.14.1/bin/node /home/zackmorgs/.npm-global/bin/firebase deploy --only hosting
+[debug] [2026-04-06T10:32:37.357Z] CLI Version:   15.13.0
+[debug] [2026-04-06T10:32:37.357Z] Platform:      linux
+[debug] [2026-04-06T10:32:37.357Z] Node Version:  v24.14.1
+[debug] [2026-04-06T10:32:37.357Z] Time:          Mon Apr 06 2026 05:32:37 GMT-0500 (Central Daylight Time)
+[debug] [2026-04-06T10:32:37.357Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-04-06T10:32:37.876Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-04-06T10:32:37.876Z] > authorizing via signed-in user (zackmorgenthaler@gmail.com)
+[debug] [2026-04-06T10:32:37.876Z] [iam] checking project karaagekid for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2026-04-06T10:32:37.877Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:37.877Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:37.877Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/karaagekid:testIamPermissions [none]
+[debug] [2026-04-06T10:32:37.877Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/karaagekid:testIamPermissions  x-goog-user-project=karaagekid
+[debug] [2026-04-06T10:32:37.877Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/karaagekid:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-06T10:32:38.265Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/karaagekid:testIamPermissions 200
+[debug] [2026-04-06T10:32:38.265Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/karaagekid:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2026-04-06T10:32:38.265Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:38.265Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:38.266Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/karaagekid [none]
+[debug] [2026-04-06T10:32:38.756Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/karaagekid 200
+[debug] [2026-04-06T10:32:38.756Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/karaagekid {"projectId":"karaagekid","projectNumber":"701397922778","displayName":"karaagekid","name":"projects/karaagekid","resources":{"hostingSite":"karaagekid"},"state":"ACTIVE","etag":"1_0d0815f3-6d02-4d78-b60b-a6c77974e5ec"}
+[info] 
+[info] === Deploying to 'karaagekid'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2026-04-06T10:32:38.758Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:38.758Z] Checked if tokens are valid: true, expires at: 1775474479991
+[debug] [2026-04-06T10:32:38.758Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/karaagekid/versions [none]
+[debug] [2026-04-06T10:32:38.758Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/karaagekid/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}

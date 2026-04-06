@@ -1,6 +1,14 @@
 ---
 import "../styles/global.scss";
 
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+}
+
 const navItems = [
   { name: "About", href: "/about" },
   // { name: "Location", href: "/location" },
@@ -11,17 +19,99 @@ const navItems = [
   { name: "Gallery", href: "/gallery" },
   { name: "Contact", href: "/contact" },
 ];
+
+const defaultTitle = "Karaage Kid | Japanese-Style Fried Chicken Catering in Toronto";
+const defaultDescription =
+  "Karaage Kid brings crispy Japanese-style fried chicken to pop-ups, catering, private events, and festivals across Toronto.";
+
+const {
+  title = defaultTitle,
+  description = defaultDescription,
+  image = "/img/12.jpg",
+  type = "website",
+  noindex = false,
+} = Astro.props as Props;
+
+const pageTitle = title.includes("Karaage Kid") ? title : `${title} | Karaage Kid`;
+const siteUrl = Astro.site ?? new URL(Astro.url.origin);
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl);
+const seoImageUrl = new URL(image, siteUrl).toString();
+const robotsContent = noindex
+  ? "noindex, nofollow"
+  : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl.toString()}#website`,
+      name: "Karaage Kid",
+      url: siteUrl.toString(),
+      description: defaultDescription,
+      inLanguage: "en-CA",
+    },
+    {
+      "@type": "FoodEstablishment",
+      "@id": `${siteUrl.toString()}#business`,
+      name: "Karaage Kid",
+      url: siteUrl.toString(),
+      image: [seoImageUrl],
+      email: "contact.karaagekid@gmail.com",
+      telephone: "+1-647-787-0671",
+      areaServed: "Toronto, Ontario, Canada",
+      servesCuisine: ["Japanese", "Fried Chicken", "Catering"],
+      sameAs: ["https://www.instagram.com/karaagekidfoods/"],
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonicalUrl.toString()}#webpage`,
+      url: canonicalUrl.toString(),
+      name: pageTitle,
+      description,
+      isPartOf: {
+        "@id": `${siteUrl.toString()}#website`,
+      },
+      about: {
+        "@id": `${siteUrl.toString()}#business`,
+      },
+      inLanguage: "en-CA",
+    },
+  ],
+};
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en-CA">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="author" content="Karaage Kid" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href={canonicalUrl.toString()} />
+    <link rel="sitemap" href={new URL("/sitemap.xml", siteUrl).toString()} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Karaage Kid | Japanese Style Fried Chicken</title>
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="Karaage Kid" />
+    <meta property="og:locale" content="en_CA" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl.toString()} />
+    <meta property="og:image" content={seoImageUrl} />
+    <meta property="og:image:alt" content={pageTitle} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={seoImageUrl} />
+
+    <title>{pageTitle}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)}></script>
   </head>
   <body>
     <div id="frame">
@@ -81,9 +171,9 @@ const navItems = [
 
     <script>
       const initNavToggle = () => {
-        const navMain = document.querySelector("#nav_main");
-        const navToggle = document.querySelector("#nav_toggle");
-        const navContainer = document.querySelector("#nav_container");
+        const navMain = document.querySelector<HTMLElement>("#nav_main");
+        const navToggle = document.querySelector<HTMLButtonElement>("#nav_toggle");
+        const navContainer = document.querySelector<HTMLElement>("#nav_container");
 
         if (
           !navMain ||
@@ -96,7 +186,7 @@ const navItems = [
 
         navToggle.dataset.bound = "true";
 
-        const setExpanded = (expanded) => {
+        const setExpanded = (expanded: boolean) => {
           navMain.classList.toggle("active", expanded);
           navContainer.classList.toggle("active", expanded);
           navToggle.setAttribute("aria-expanded", String(expanded));
