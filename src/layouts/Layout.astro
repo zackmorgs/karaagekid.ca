@@ -157,7 +157,14 @@ const structuredData = {
               }
             </ul>
             <div class="nav-feature">
-              <a href="/get-a-quote" class="btn-cta"> Get a Quote </a>
+              <a
+                href="/get-a-quote"
+                class="btn-cta"
+                data-ga-event="cta_get_a_quote"
+                data-ga-label="nav_get_a_quote"
+              >
+                Get a Quote
+              </a>
             </div>
           </div>
         </div>
@@ -229,6 +236,7 @@ const structuredData = {
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q6WG7L851R"
     ></script>
     <script>
+      // init Google Analytics
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -236,6 +244,33 @@ const structuredData = {
       gtag("js", new Date());
 
       gtag("config", "G-Q6WG7L851R");
+    </script>
+
+    <script>
+      const initAnalyticsEvents = () => {
+        document.querySelectorAll<HTMLElement>("[data-ga-event]").forEach((link) => {
+          if (link.dataset.gaBound === "true") return;
+          link.dataset.gaBound = "true";
+
+          link.addEventListener("click", () => {
+            const eventName = link.dataset.gaEvent;
+            const eventLabel = link.dataset.gaLabel ?? link.getAttribute("href") ?? "unknown";
+
+            if (!eventName || typeof window.gtag !== "function") {
+              return;
+            }
+
+            window.gtag("event", eventName, {
+              event_category: "engagement",
+              event_label: eventLabel,
+              page_location: window.location.pathname,
+            });
+          });
+        });
+      };
+
+      document.addEventListener("DOMContentLoaded", initAnalyticsEvents);
+      document.addEventListener("astro:page-load", initAnalyticsEvents);
     </script>
   </body>
 </html>
