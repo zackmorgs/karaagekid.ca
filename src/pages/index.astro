@@ -1,8 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Welcome from '../components/Welcome.astro';
-import Social from '../components/Social.astro';
+import WhatWeDo from '../components/WhatWeDo.astro';
 import Location from '../components/Location.astro';
+import Social from '../components/Social.astro';
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -14,6 +16,7 @@ import Location from '../components/Location.astro';
   image="/img/og/open-graph-index.png"
 >
 	<Welcome />
+  <WhatWeDo />
 	<Location />
 	<Social />
 </Layout>

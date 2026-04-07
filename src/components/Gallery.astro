@@ -20,7 +20,7 @@ const images = [
     src: "/img/gallery/5.png",
     alt: "",
   },
-    {
+  {
     src: "/img/gallery/6.png",
     alt: "",
   },
@@ -50,7 +50,8 @@ const images = [
         <div class="gallery-grid">
           {
             images.map((image, index) => {
-              const altText = image.alt || `Karaage Kid gallery photo ${index + 1}`;
+              const altText =
+                image.alt || `Karaage Kid gallery photo ${index + 1}`;
 
               return (
                 <button
@@ -93,58 +94,67 @@ const images = [
 </section>
 
 <script>
-  document.querySelectorAll<HTMLElement>('[data-gallery-root]').forEach((gallery) => {
-    if (gallery.dataset.modalBound === 'true') {
-      return;
-    }
+  document
+    .querySelectorAll<HTMLElement>("[data-gallery-root]")
+    .forEach((gallery) => {
+      if (gallery.dataset.modalBound === "true") {
+        return;
+      }
 
-    gallery.dataset.modalBound = 'true';
+      gallery.dataset.modalBound = "true";
 
-    const modal = gallery.querySelector('.gallery-modal');
-    const modalImage = gallery.querySelector('.gallery-modal-image');
-    const closeButton = gallery.querySelector<HTMLButtonElement>('[data-gallery-close]');
-    const imageButtons = gallery.querySelectorAll<HTMLElement>('[data-gallery-image]');
+      const modal = gallery.querySelector(".gallery-modal");
+      const modalImage = gallery.querySelector(".gallery-modal-image");
+      const closeButton = gallery.querySelector<HTMLButtonElement>(
+        "[data-gallery-close]",
+      );
+      const imageButtons = gallery.querySelectorAll<HTMLElement>(
+        "[data-gallery-image]",
+      );
 
-    if (!(modal instanceof HTMLDialogElement) || !(modalImage instanceof HTMLImageElement)) {
-      return;
-    }
+      if (
+        !(modal instanceof HTMLDialogElement) ||
+        !(modalImage instanceof HTMLImageElement)
+      ) {
+        return;
+      }
 
-    const openModal = (src: string, alt: string) => {
-      modalImage.src = src;
-      modalImage.alt = alt;
-      document.body.style.overflow = 'hidden';
-      modal.showModal();
-    };
+      const openModal = (src: string, alt: string) => {
+        modalImage.src = src;
+        modalImage.alt = alt;
+        document.body.style.overflow = "hidden";
+        modal.showModal();
+      };
 
-    const closeModal = () => {
-      modal.close();
-    };
+      const closeModal = () => {
+        modal.close();
+      };
 
-    imageButtons.forEach((button) => {
-      button.addEventListener('click', () => {
-        const src = button.getAttribute('data-fullsrc');
-        const alt = button.getAttribute('data-alt') || 'Gallery image';
+      imageButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const src = button.getAttribute("data-fullsrc");
+          const alt = button.getAttribute("data-alt") || "Gallery image";
 
-        if (!src) {
-          return;
+          if (!src) {
+            return;
+          }
+
+          openModal(src, alt);
+        });
+      });
+
+      closeButton?.addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal();
         }
+      });
 
-        openModal(src, alt);
+      modal.addEventListener("close", () => {
+        document.body.style.overflow = "";
+        modalImage.src = "";
+        modalImage.alt = "";
       });
     });
-
-    closeButton?.addEventListener('click', closeModal);
-
-    modal.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
-      }
-    });
-
-    modal.addEventListener('close', () => {
-      document.body.style.overflow = '';
-      modalImage.src = '';
-      modalImage.alt = '';
-    });
-  });
 </script>
