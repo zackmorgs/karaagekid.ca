@@ -1,6 +1,6 @@
 $bg_color: rgba(17, 17, 17, 0.78);
 $bg_blur: blur(0.5rem);
-$purple:  #804099;
+$purple: #804099;
 *,
 *::before,
 *::after {
@@ -54,20 +54,29 @@ $purple:  #804099;
 
 #hero_subtitle {
   font-family: "Porter-Light", sans-serif;
-  font-weight:300;
-  color:white;
-  border-radius:2rem;
-  font-size:1rem;
-  border:2px solid rgba(225,225,225,0.5);
-  background: #00000027;
-  padding:1rem;
+  font-weight: 300;
+  color: white;
+  border-radius: 2rem;
+  font-size: 1.25rem;
+  border: 2px solid rgba(225, 225, 225, 0.5);
+  background: rgba(0, 0, 0, 0.1529411765);
+  padding: 1em;
+  margin: 1rem 0 0.75rem;
 }
 
 .rule-sm {
   width: 2rem;
-  border:0;
-  border-bottom:5px solid #f1f1f188;
+  border: 0;
+  border-bottom: 5px solid #f1f1f188;
   background: currentColor;
+}
+
+.rule-md {
+  width: 7ch;
+  border: 0;
+  border-bottom: 4px solid #f1f1f188;
+  background: currentColor;
+  margin: 0.75rem auto 0.75rem;
 }
 
 p,
@@ -316,16 +325,14 @@ img {
   }
 }
 
-
 #location {
   background: url("/img/9-gradient-map.png") center/cover no-repeat;
-
 }
 
 #location_icon {
-  margin:0 auto;
-  height:2rem;
-  color:currentColor;
+  margin: 0 auto;
+  height: 2rem;
+  color: currentColor;
 }
 
 #our_story {
@@ -616,7 +623,7 @@ footer {
 
 @media (min-width: 768px) {
   .hidden-mobile {
-    display:inline-flex;
+    display: inline-flex;
   }
   .panel {
     width: 56ch;
@@ -684,7 +691,7 @@ footer {
   .nav-feature {
     padding: 0 0 0 1rem;
     margin: 0;
-    .btn-cta {        
+    .btn-cta {
       padding: 0.75rem;
       background: rgb(127 63 152 / 35%);
       width: auto;
