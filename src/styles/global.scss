@@ -282,7 +282,6 @@ a {
   }
 }
 
-
 .nav-feature {
   margin-top: 1rem;
   display: flex;
@@ -373,7 +372,7 @@ img {
   background: url("/img/13-gradient-map.png") center/cover no-repeat;
 
   h2 {
-    color:#337fe1;
+    color: #337fe1;
   }
 }
 
@@ -638,7 +637,6 @@ footer {
   display: none;
 }
 
-
 .input-group {
   display: flex;
   flex-direction: column;
@@ -653,11 +651,110 @@ footer {
   border: 1px solid rgba(241, 241, 241, 0.212);
   // background: rgb(17 17 17 / 78%);
   backdrop-filter: blur(0.5rem);
-  font-size:1rem;
+  font-size: 1rem;
   // color: #f1f1f1;
+}
+.quote-panel {
+  gap: 1.5rem;
+}
+
+.quote-calculator {
+  display: grid;
+  gap: 1rem;
+  width: 100%;
+}
+
+.quote-range {
+  width: 100%;
+  accent-color: #804099;
+}
+
+.quote-help,
+.quote-disclaimer {
+  margin: 0;
+}
+
+.quote-estimate {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid rgba(241, 241, 241, 0.16);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.quote-kicker {
+  margin: 0 0 0.5rem;
+  color: #f1f1f1;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.quote-total {
+  margin: 0 0 1rem;
+  color: #fff;
+  font-size: clamp(2rem, 6vw, 3rem);
+  line-height: 1.1;
+}
+
+.quote-meta {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.quote-meta div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(241, 241, 241, 0.08);
+}
+
+.quote-meta div:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.quote-meta strong {
+  color: #fff;
+  text-align: right;
+}
+
+.quote-breakdown {
+  width: 100%;
+}
+
+.quote-tiers {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.quote-tiers li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid rgba(241, 241, 241, 0.12);
+  border-radius: 0.75rem;
+}
+
+.quote-actions {
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 @media (min-width: 768px) {
+  .quote-calculator {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .quote-estimate {
+    height: 100%;
+  }
   .hidden-mobile {
     display: inline-flex;
   }
@@ -666,7 +763,7 @@ footer {
     background: #00000063;
     border: 2px solid #f1f1f123;
     border-radius: 1rem;
-    margin:1rem auto;
+    margin: 1rem auto;
     &.content {
       h2 {
         // text-shadow: 1px 1px 0px #f1f1f1;
