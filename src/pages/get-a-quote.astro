@@ -1,5 +1,44 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const defaultGuests = 20;
+const bufferMultiplier = 1.15;
+const baseFee = 400;
+
+function getPricePerHead(guests: number) {
+  let pricePerHead = 30;
+
+  if (guests > 20) pricePerHead = 25;
+  if (guests > 30) pricePerHead = 22;
+  if (guests > 50) pricePerHead = 20;
+  if (guests > 75) pricePerHead = 18;
+
+  return pricePerHead;
+}
+
+function calculateQuote(guests: number) {
+  const effectiveGuests = Math.ceil(guests * bufferMultiplier);
+  const pricePerHead = getPricePerHead(guests);
+
+  let total = baseFee + effectiveGuests * pricePerHead;
+
+  if (guests > 50) total += 200;
+
+  return total;
+}
+
+function formatCurrency(amount: number) {
+  return new Intl.NumberFormat("en-CA", {
+    style: "currency",
+    currency: "CAD",
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+const defaultPreparedGuests = Math.ceil(defaultGuests * bufferMultiplier);
+const defaultPricePerHead = getPricePerHead(defaultGuests);
+const defaultLargeEventFee = defaultGuests > 50 ? 200 : 0;
+const defaultQuote = calculateQuote(defaultGuests);
 ---
 
 <Layout
@@ -17,13 +56,294 @@ import Layout from "../layouts/Layout.astro";
       </div>
     </div>
   </header>
-  <section id="contact">
+
+  <section class="section">
     <div class="overlay">
       <div class="container">
-        <div class="panel">
-            <h2>Coming Soon</h2>
+        <div class="panel content quote-panel">
+          <p>
+            Use this quick estimator to get a starting price for your catering
+            order. Final quotes may vary based on menu, setup, and service
+            needs.
+          </p>
+
+          <div class="quote-calculator">
+            <div class="input-group">
+              <label for="guests">Number of Guests</label>
+              <input
+                type="number"
+                placeholder="Number of Guests"
+                id="guests"
+                class="input"
+                min="1"
+                step="1"
+                value={defaultGuests}
+              />
+              <input
+                type="range"
+                id="guestsRange"
+                class="quote-range"
+                min="1"
+                max="200"
+                step="1"
+                value={defaultGuests}
+              />
+              <br>
+              <p id="quote-help" class="quote-help">
+                Pricing includes a 15% food buffer so everyone gets fed.
+              </p>
+            </div>
+            
+            <div class="quote-estimate" aria-live="polite">
+              <p class="quote-kicker">Estimated catering total</p>
+              <p id="quoteTotal" class="quote-total">
+                {formatCurrency(defaultQuote)}
+              </p>
+
+              <div class="quote-meta">
+                <div>
+                  <span>Rate</span>
+                  <strong id="pricePerHead">
+                    {formatCurrency(defaultPricePerHead)}/guest
+                  </strong>
+                </div>
+                <div>
+                  <span>Food prepared for</span>
+                  <strong id="effectiveGuests"
+                    >{defaultPreparedGuests} servings</strong
+                  >
+                </div>
+                <div>
+                  <span>Large event fee</span>
+                  <strong id="serviceFee">
+                    {
+                      defaultLargeEventFee
+                        ? `${formatCurrency(defaultLargeEventFee)} added`
+                        : "Not needed"
+                    }
+                  </strong>
+                </div>
+              </div>
+            </div>
+          </div>
+          <br>
+          <div class="quote-breakdown">
+            <h2>Pricing Tiers</h2>
+            <ul class="quote-tiers">
+              <li><span>1–20 guests</span><strong>$30/head</strong></li>
+              <li><span>21–30 guests</span><strong>$25/head</strong></li>
+              <li><span>31–50 guests</span><strong>$22/head</strong></li>
+              <li>
+                <span>51–75 guests</span><strong>$20/head + $200 setup</strong>
+              </li>
+              <li>
+                <span>76+ guests</span><strong>$18/head + $200 setup</strong>
+              </li>
+            </ul>
+          </div>
+          <br />
+          <p class="quote-disclaimer">
+            Need a final quote? Email us and we’ll help tailor the menu for your
+            event.
+          </p>
+          <br />
+          <div class="btn-group-horizontal quote-actions">
+            <a
+              href="mailto:contact.karaagekid@gmail.com?subject=Catering%20Quote%20Request"
+              class="btn btn-cta">Get a Formal Quote</a
+            >
+            <a href="/contact" class="btn btn-cta">Contact</a>
+          </div>
         </div>
       </div>
     </div>
   </section>
 </Layout>
+
+<style>
+  .quote-panel {
+    gap: 1.5rem;
+  }
+
+  .quote-calculator {
+    display: grid;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  .quote-range {
+    width: 100%;
+    accent-color: #804099;
+  }
+
+  .quote-help,
+  .quote-disclaimer {
+    margin: 0;
+  }
+
+  .quote-estimate {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid rgba(241, 241, 241, 0.16);
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .quote-kicker {
+    margin: 0 0 0.5rem;
+    color: #f1f1f1;
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .quote-total {
+    margin: 0 0 1rem;
+    color: #fff;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+  }
+
+  .quote-meta {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .quote-meta div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(241, 241, 241, 0.08);
+  }
+
+  .quote-meta div:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .quote-meta strong {
+    color: #fff;
+    text-align: right;
+  }
+
+  .quote-breakdown {
+    width: 100%;
+  }
+
+  .quote-tiers {
+    display: grid;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .quote-tiers li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid rgba(241, 241, 241, 0.12);
+    border-radius: 0.75rem;
+  }
+
+  .quote-actions {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+    .quote-calculator {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: start;
+    }
+
+    .quote-estimate {
+      height: 100%;
+    }
+  }
+</style>
+
+<script>
+  const guestInput = document.querySelector("#guests");
+  const guestRange = document.querySelector("#guestsRange");
+  const totalOutput = document.querySelector("#quoteTotal");
+  const effectiveGuestsOutput = document.querySelector("#effectiveGuests");
+  const pricePerHeadOutput = document.querySelector("#pricePerHead");
+  const serviceFeeOutput = document.querySelector("#serviceFee");
+
+  const formatCurrency = (amount) =>
+    new Intl.NumberFormat("en-CA", {
+      style: "currency",
+      currency: "CAD",
+      maximumFractionDigits: 0,
+    }).format(amount);
+
+  const getPricePerHead = (guests) => {
+    let pricePerHead = 30;
+
+    if (guests > 20) pricePerHead = 25;
+    if (guests > 30) pricePerHead = 22;
+    if (guests > 50) pricePerHead = 20;
+    if (guests > 75) pricePerHead = 18;
+
+    return pricePerHead;
+  };
+
+  const calculateQuote = (guests) => {
+    const effectiveGuests = Math.ceil(guests * 1.15);
+    const pricePerHead = getPricePerHead(guests);
+    let total = 400 + effectiveGuests * pricePerHead;
+
+    if (guests > 50) total += 200;
+
+    return {
+      total,
+      effectiveGuests,
+      pricePerHead,
+      serviceFee: guests > 50 ? 200 : 0,
+    };
+  };
+
+  const updateQuote = (value) => {
+    const guests = Math.max(1, Number.parseInt(String(value), 10) || 1);
+    const quote = calculateQuote(guests);
+
+    if (guestInput) guestInput.value = String(guests);
+
+    if (guestRange) {
+      if (guests > Number(guestRange.max)) {
+        guestRange.max = String(guests);
+      }
+
+      guestRange.value = String(guests);
+    }
+
+    if (totalOutput) totalOutput.textContent = formatCurrency(quote.total);
+
+    if (effectiveGuestsOutput) {
+      effectiveGuestsOutput.textContent = `${quote.effectiveGuests} servings`;
+    }
+
+    if (pricePerHeadOutput) {
+      pricePerHeadOutput.textContent = `${formatCurrency(quote.pricePerHead)}/guest`;
+    }
+
+    if (serviceFeeOutput) {
+      serviceFeeOutput.textContent = quote.serviceFee
+        ? `${formatCurrency(quote.serviceFee)} added`
+        : "Not needed";
+    }
+  };
+
+  guestInput?.addEventListener("input", () => {
+    updateQuote(guestInput.value);
+  });
+
+  guestRange?.addEventListener("input", () => {
+    updateQuote(guestRange.value);
+  });
+
+  updateQuote(guestInput?.value ?? "20");
+</script>
