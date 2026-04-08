@@ -14,7 +14,9 @@
 - Reviews / Testimonials
   - Need to code in testimonials 
     - Want to harvest google reviews - needs business page.
-
+- Menu
+  - You said what i had was innacurate. Please make a google doc with the proper items on it.
+  
 ## Jay's Todo:
 - Ez: https://www.instagram.com/p/DO_eM7ADgp3/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==
   - i need the png/jpeg/webp of this image.
