@@ -282,12 +282,15 @@ a {
   }
 }
 
+
 .nav-feature {
   margin-top: 1rem;
   display: flex;
   justify-content: center;
   .btn-cta {
     width: 100%;
+            background: rgba(127, 63, 152, 0.35);
+
   }
 }
 
