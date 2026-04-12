@@ -11,8 +11,6 @@ function getPricePerHead(guests: number) {
 
   if (guests > 20) pricePerHead = 25;
   if (guests > 30) pricePerHead = 22;
-  if (guests > 50) pricePerHead = 20;
-  if (guests > 75) pricePerHead = 18;
 
   return pricePerHead;
 }
@@ -21,11 +19,7 @@ function calculateQuote(guests: number) {
   const effectiveGuests = Math.ceil(guests * bufferMultiplier);
   const pricePerHead = getPricePerHead(guests);
 
-  let total = baseFee + effectiveGuests * pricePerHead;
-
-  if (guests > 50) total += 200;
-
-  return total;
+  return baseFee + effectiveGuests * pricePerHead;
 }
 
 function formatCurrency(amount: number) {
@@ -38,7 +32,6 @@ function formatCurrency(amount: number) {
 
 const defaultPreparedGuests = Math.ceil(defaultGuests * bufferMultiplier);
 const defaultPricePerHead = getPricePerHead(defaultGuests);
-const defaultLargeEventFee = defaultGuests > 50 ? 200 : 0;
 const defaultQuote = calculateQuote(defaultGuests);
 ---
 
@@ -117,14 +110,8 @@ const defaultQuote = calculateQuote(defaultGuests);
                   >
                 </div>
                 <div>
-                  <span>Large event fee</span>
-                  <strong id="serviceFee">
-                    {
-                      defaultLargeEventFee
-                        ? `${formatCurrency(defaultLargeEventFee)} added`
-                        : "Not needed"
-                    }
-                  </strong>
+                  <span>Large groups</span>
+                  <strong id="serviceFee">Custom quote for 51+ guests</strong>
                 </div>
               </div>
             </div>
@@ -186,14 +173,16 @@ const defaultQuote = calculateQuote(defaultGuests);
       guestInput.getAttribute("max") ?? guestRange.getAttribute("max") ?? 50,
     );
 
-    const formatCurrency = (amount) =>
+    /** @param {number} amount */
+    const formatCurrency = (amount : number ) =>
       new Intl.NumberFormat("en-CA", {
         style: "currency",
         currency: "CAD",
         maximumFractionDigits: 0,
       }).format(amount);
 
-    const getPricePerHead = (guests) => {
+    /** @param {number} guests */
+    const getPricePerHead = (guests : number ) => {
       let pricePerHead = 30;
 
       if (guests > 20) pricePerHead = 25;
@@ -202,7 +191,8 @@ const defaultQuote = calculateQuote(defaultGuests);
       return pricePerHead;
     };
 
-    const calculateQuote = (guests) => {
+    /** @param {number} guests */
+    const calculateQuote = (guests : number ) => {
       const effectiveGuests = Math.ceil(guests * 1.15);
       const pricePerHead = getPricePerHead(guests);
       const total = 400 + effectiveGuests * pricePerHead;
@@ -215,7 +205,8 @@ const defaultQuote = calculateQuote(defaultGuests);
       };
     };
 
-    const updateQuote = (value) => {
+    /** @param {string | number} value */
+    const updateQuote = (value : number ) => {
       const parsedGuests = Number.parseInt(String(value), 10) || 1;
       const guests = Math.min(maxGuests, Math.max(1, parsedGuests));
       const quote = calculateQuote(guests);
@@ -229,14 +220,14 @@ const defaultQuote = calculateQuote(defaultGuests);
     };
 
     guestInput.addEventListener("input", () => {
-      updateQuote(guestInput.value);
+      updateQuote(Number(guestInput.value));
     });
 
     guestRange.addEventListener("input", () => {
-      updateQuote(guestRange.value);
+      updateQuote(Number(guestRange.value));
     });
 
-    updateQuote(guestInput.value || "20");
+    updateQuote(Number(guestInput.value) || 20);
   };
 
   if (document.readyState === "loading") {
