@@ -1,0 +1,55 @@
+[
+  {
+    "title": "Karaage Plates",
+    "items": [
+      {
+        "name": "3-Piece Karaage",
+        "description": "Crispy Japanese-style fried chicken served over a bed of purple rice."
+      }
+    ]
+  },
+  {
+    "title": "Choose Your Sauces",
+    "items": [
+      {
+        "name": "Japanese Curry Box",
+        "description": "Rich Japanese curry served with assorted fried vegetables."
+      },
+      {
+        "name": "Spicy Sesame Box",
+        "description": "A sesame sauce with spicy mayo topped with green onions and nanami pepper with pickled ginger."
+      },
+      {
+        "name": "Citrus Garlic Box",
+        "description": "A citrus soy with garlic mayo topped with pickled soy onions. Also comes with nanami pepper with pickled ginger."
+      }
+    ]
+  },
+  {
+    "title": "Karaage Sandwiches",
+    "note": "Served on a brioche bun with daikon, topped with a sesame sauce with spicy mayo. Comes with coleslaw and crispy onions.",
+    "items": [
+      {
+        "name": "Karaage Sandwich (Mild)",
+        "description": "Topped with sesame sauce, spicy mayo."
+      },
+      {
+        "name": "Nashville Hot Sandwich",
+        "description": "Spicy karaage topped with buttermilk ranch."
+      }
+    ]
+  },
+  {
+    "title": "Snacks",
+    "items": [
+      {
+        "name": "Panko Fried Hot Dog Skewers",
+        "description": "Served with sesame sauce and spicy mayo."
+      },
+      {
+        "name": "Takoyaki",
+        "description": "Japanese octopus wheat flour balls served with your choice of sauce."
+      }
+    ]
+  }
+]
